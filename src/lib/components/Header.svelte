@@ -16,6 +16,7 @@
             <li><a href="/auth/login">Login</a></li>
             <li><a href="/auth/register">Register</a></li>
         {:else}
+            <li>{user.username}</li>
             <li><a role="button" href="/admin">Admin</a></li>
             <li>
                 <form action="/auth/logout" style="margin: 0" method="POST">
