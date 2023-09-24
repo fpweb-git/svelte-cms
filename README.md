@@ -10,6 +10,12 @@ npm i
 npx prisma db push
 ```
 
+## open prisma studio
+
+```bash
+npx prisma studio
+```
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:

@@ -1,6 +1,5 @@
 import type { Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { prisma } from '$lib/server/prisma'
 import { fail, redirect } from '@sveltejs/kit';
 import { auth } from '$lib/server/lucia';
 
@@ -15,7 +14,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions: Actions = {
     registerUser: async ({ request }) => {
         const { username, email, password, confirmPassword } = Object.fromEntries(await request.formData()) as { username: string, email: string, password: string, confirmPassword: string }
-        // console.log(username, email, password, confirmPassword)
         if (password === confirmPassword) {
             try {
                 await auth.createUser({
@@ -29,7 +27,7 @@ export const actions: Actions = {
                         email,
                         role: {
                             connect: {
-                                id: '331034f6-9090-49d2-999c-e34a8ce3499c'
+                                name: 'ADMIN'
                             }
                         }
                     }
@@ -40,6 +38,7 @@ export const actions: Actions = {
                 return fail(400, { message: 'Something went wrong' })
 
             }
+            throw redirect(302, '/auth/login')
         }
         else {
             console.log('password not match')
