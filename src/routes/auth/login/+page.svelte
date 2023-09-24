@@ -1,4 +1,5 @@
 <main>
+    <h1>Login</h1>
     <form action="" method="POST">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" />
@@ -12,8 +13,5 @@
     main {
         max-width: 640px;
         margin: 2rem auto;
-    }
-    button {
-        margin-top: 2rem;
     }
 </style>

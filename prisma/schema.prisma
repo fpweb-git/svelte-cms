@@ -15,3 +15,43 @@ model Article {
   title   String
   content String
 }
+
+model User {
+  id       String @id @unique
+  username String @unique
+  email    String @unique
+
+  auth_session Session[]
+  key          Key[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  role   Roles  @relation(fields: [roleId], references: [id])
+  roleId String
+}
+
+model Session {
+  id             String @id @unique
+  user_id        String
+  active_expires BigInt
+  idle_expires   BigInt
+  user           User   @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+model Key {
+  id              String  @id @unique
+  hashed_password String?
+  user_id         String
+  user            User    @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+model Roles {
+  id   String @id @unique @default(uuid())
+  name String @unique
+  user User[]
+}
