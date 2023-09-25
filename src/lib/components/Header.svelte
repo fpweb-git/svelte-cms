@@ -1,6 +1,7 @@
 <script lang="ts">
     import Logo from "./Logo.svelte";
     export let user: any;
+    console.log(user);
 </script>
 
 <nav>
@@ -17,7 +18,9 @@
             <li><a href="/auth/register">Register</a></li>
         {:else}
             <li>{user.username}</li>
-            <li><a role="button" href="/admin">Admin</a></li>
+            {#if user.roleName === "ADMIN"}
+                <li><a role="button" href="/admin">Admin</a></li>
+            {/if}
             <li>
                 <form action="/auth/logout" style="margin: 0" method="POST">
                     <button
