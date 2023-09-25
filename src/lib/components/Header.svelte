@@ -1,7 +1,6 @@
 <script lang="ts">
     import Logo from "./Logo.svelte";
     export let user: any;
-    console.log(user);
 </script>
 
 <nav>
