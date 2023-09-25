@@ -16,6 +16,32 @@ export const actions: Actions = {
         const { username, email, password, confirmPassword } = Object.fromEntries(await request.formData()) as { username: string, email: string, password: string, confirmPassword: string }
         if (password === confirmPassword) {
             try {
+                // Check if there are any users in the database
+                const users = await prisma.user.findMany();
+
+                let roleName = 'USER';
+
+                // If there are no users, assign 'ADMIN' role to the first user
+                if (users.length === 0) {
+                    roleName = 'ADMIN';
+                }
+
+                // Check if the role exists in the database
+                let role = await prisma.roles.findUnique({
+                    where: {
+                        name: roleName,
+                    },
+                });
+
+                // If the role doesn't exist, create it
+                if (!role) {
+                    role = await prisma.roles.create({
+                        data: {
+                            name: roleName,
+                        },
+                    });
+                }
+
                 await auth.createUser({
                     key: {
                         providerId: 'email',
@@ -27,12 +53,12 @@ export const actions: Actions = {
                         email,
                         role: {
                             connect: {
-                                name: 'ADMIN'
+                                id: role.id
                             }
                         }
                     }
                 })
-
+                console.log(role)
             } catch (err) {
                 console.error(err)
                 return fail(400, { message: 'Something went wrong' })
@@ -44,5 +70,4 @@ export const actions: Actions = {
             return fail(400, { message: 'password not match' })
         }
     },
-
 }
