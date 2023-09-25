@@ -58,7 +58,6 @@ export const actions: Actions = {
                         }
                     }
                 })
-                console.log(role)
             } catch (err) {
                 console.error(err)
                 return fail(400, { message: 'Something went wrong' })
