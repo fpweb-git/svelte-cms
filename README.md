@@ -23,7 +23,8 @@ npm run dev
 ```
 
 When you register, the first user will be assigned the ‘admin’ role.
-The project currently uses [PicosCSS](https://picocss.com/) for basic styling. If you prefer to start with an unstyled project, simply remove the PicosCSS CDN link in app.html
+
+The project currently uses [PicosCSS](https://picocss.com/) for basic styling. If you prefer to start with an unstyled project, simply remove the PicosCSS CDN link in `app.html`
 
 ## Building
 
