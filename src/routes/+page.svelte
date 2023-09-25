@@ -8,6 +8,6 @@
 </script>
 
 <main>
-    <h1>Welcome to SvelteKit</h1>
+    <h1>Fresh articles</h1>
     <PostsList {articles} />
 </main>

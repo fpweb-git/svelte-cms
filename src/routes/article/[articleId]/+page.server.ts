@@ -3,7 +3,6 @@ import { prisma } from '$lib/server/prisma'
 import { error } from '@sveltejs/kit';
 
 
-
 export const load: PageServerLoad = async ({ params }) => {
     const getArticle = async () => {
         const id = params.articleId

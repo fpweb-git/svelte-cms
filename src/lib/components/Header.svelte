@@ -7,7 +7,7 @@
     <ul>
         <li>
             <a href="/" style="color: var(--h3-color);"
-                ><strong><Logo />Blog starter</strong></a
+                ><strong><Logo />SveltePress</strong></a
             >
         </li>
     </ul>
