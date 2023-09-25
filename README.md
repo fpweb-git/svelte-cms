@@ -18,14 +18,12 @@ npx prisma studio
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
+
+Register, the first user will have the admin role.
+The project currently uses [PicosCSS](https://picocss.com/) for basic styling. If you prefer to start with an unstyled project, simply remove the PicosCSS CDN link in app.html
 
 ## Building
 
