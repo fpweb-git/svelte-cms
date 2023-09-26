@@ -17,7 +17,7 @@
             <li><a href="/auth/register">Register</a></li>
         {:else}
             <li>{user.username}</li>
-            {#if user.roleName === "ADMIN"}
+            {#if user.role === "ADMIN"}
                 <li><a role="button" href="/admin">Admin</a></li>
             {/if}
             <li>
